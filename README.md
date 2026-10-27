@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="https://watson.icu"><img alt="Website: watson.icu" src="https://img.shields.io/badge/watson.icu-website-82a9f5?style=for-the-badge&labelColor=10151f"></a>
+  <a href="https://watsonfind.icu"><img alt="Website: watsonfind.icu" src="https://img.shields.io/badge/watsonfind.icu-website-82a9f5?style=for-the-badge&labelColor=10151f"></a>
   <a href="https://github.com/footprintsntrails/watson/releases/latest"><img alt="Download for Windows" src="https://img.shields.io/badge/Download-Windows%20.exe-ffffff?style=for-the-badge&logo=windows&logoColor=000000&labelColor=82a9f5"></a>
   <img alt="Price: free forever" src="https://img.shields.io/badge/price-%240%20forever-30d158?style=for-the-badge&labelColor=10151f">
   <img alt="Status: prototype" src="https://img.shields.io/badge/status-prototype-ffd60a?style=for-the-badge&labelColor=10151f">
@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <b><a href="https://watson.icu">watson.icu</a></b>: read it out loud. <i>I see you.</i>
+  <b><a href="https://watsonfind.icu">watsonfind.icu</a></b>: read it out loud. <i>Watson, find. I see you.</i>
 </p>
 
 ---
@@ -68,7 +68,7 @@ No setup wizard, no account, no admin rights. Download one file and open it.
 
 ### 1. Download
 
-Go to **[Releases](https://github.com/footprintsntrails/watson/releases/latest)** and click **`Watson-0.1.0-portable.exe`**.
+Go to **[Releases](https://github.com/footprintsntrails/watson/releases/latest)** and click **`Watson-1.3.2-portable.exe`**.
 
 <img src="docs/images/step-1-download.png" alt="Step 1: click the .exe file on the Releases page" width="100%">
 
@@ -97,7 +97,7 @@ Type what you know and press **Enter**.
 That's it. There is nothing else to learn.
 
 > [!TIP]
-> **No Windows?** Open **[watson.icu](https://watson.icu)** and click **Open in your browser**. Same app, nothing to download.
+> **No Windows?** Open **[watsonfind.icu](https://watsonfind.icu)** and click **Open in your browser**. Same app, nothing to download.
 
 ---
 
@@ -123,9 +123,9 @@ For bigger jobs, **Cases** connect everything Watson found into one map. Click a
 
 ## The website
 
-**[watson.icu](https://watson.icu)** has the full tour, the download button and the browser version of the app.
+**[watsonfind.icu](https://watsonfind.icu)** has the full tour, the download button and the browser version of the app.
 
-<a href="https://watson.icu"><img src="docs/images/website.png" alt="The watson.icu landing page" width="100%"></a>
+<a href="https://watsonfind.icu"><img src="docs/images/website.png" alt="The watsonfind.icu landing page" width="100%"></a>
 
 ---
 
@@ -161,7 +161,7 @@ Watson only looks at information that is already public: things anyone could fin
 <details>
 <summary><b>Does it work on Mac?</b></summary>
 <br>
-There is no Mac download yet. Use Watson in your browser at <a href="https://watson.icu">watson.icu</a> in the meantime.
+There is no Mac download yet. Use Watson in your browser at <a href="https://watsonfind.icu">watsonfind.icu</a> in the meantime.
 </details>
 
 <details>
@@ -215,16 +215,16 @@ Then open http://localhost:5173/app.
 npm run app
 ```
 
-### Website (watson.icu)
+### Website (watsonfind.icu)
 
 The landing page and the browser version of the app are one static site:
 
 | URL | What's there |
 | --- | --- |
-| `watson.icu/` | Landing page: `src/pages/Landing.tsx` |
-| `watson.icu/app` | The app itself, running in the browser |
+| `watsonfind.icu/` | Landing page: `src/pages/Landing.tsx` |
+| `watsonfind.icu/app` | The app itself, running in the browser |
 
-Build it with `npm run build` and upload the `dist/` folder to any static host. Routes like `/app/history` must fall back to `index.html`; `public/_redirects` handles that on Netlify and Cloudflare Pages, and `vercel.json` on Vercel. Point the `watson.icu` DNS records at your host.
+Build it with `npm run build` and upload the `dist/` folder to any static host. Routes like `/app/history` must fall back to `index.html`; `public/_redirects` handles that on Netlify and Cloudflare Pages, and `vercel.json` on Vercel. Point the `watsonfind.icu` DNS records at your host.
 
 The download buttons use `DOWNLOAD_URL` in `src/pages/Landing.tsx`. While this repository is private, visitors can't open GitHub Releases, so point it at a public copy of the .exe before launch.
 
@@ -234,7 +234,7 @@ The download buttons use `DOWNLOAD_URL` in `src/pages/Landing.tsx`. While this r
 npm run dist:win
 ```
 
-The file lands in `release/Watson-0.1.0-portable.exe`. Building on Linux works without Wine, but then the .exe keeps the default Electron file icon. Build on Windows to embed the Watson icon.
+The file lands in `release/Watson-1.3.2-portable.exe`. Building on Linux works without Wine, but then the .exe keeps the default Electron file icon. Build on Windows to embed the Watson icon.
 
 ### Stack
 
@@ -244,7 +244,7 @@ Vite, React 19, TypeScript, Tailwind CSS 4, Electron. Icons: [Phosphor](https://
 
 | Path | What's there |
 | --- | --- |
-| `src/pages/Landing.tsx` | The watson.icu landing page |
+| `src/pages/Landing.tsx` | The watsonfind.icu landing page |
 | `src/pages/app/` | App screens: Search, Results, History, Case, Sources |
 | `src/components/` | Logo, glass lens, connections map, brand icons |
 | `src/data/mock.ts` | All demo data. Replace with real API calls here. |
@@ -258,5 +258,5 @@ Vite, React 19, TypeScript, Tailwind CSS 4, Electron. Icons: [Phosphor](https://
 
 <p align="center">
   <img src="public/favicon.svg" width="40" alt=""><br>
-  <sub><a href="https://watson.icu">watson.icu</a>. Free forever.</sub>
+  <sub><a href="https://watsonfind.icu">watsonfind.icu</a>. Free forever.</sub>
 </p>

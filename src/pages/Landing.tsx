@@ -353,11 +353,11 @@ function SeeYourself() {
     <section className="px-5 py-24">
       <div className="mx-auto max-w-4xl text-center">
         <p className="text-[15px] text-fog">Our address is</p>
-        <h2 className="mt-2 text-[56px] font-bold leading-none tracking-[-0.04em] sm:text-[104px]">
-          watson<span className="text-gas-400">.icu</span>
+        <h2 className="mt-2 text-[11.5vw] font-bold leading-none tracking-[-0.04em] sm:text-[96px]">
+          watsonfind<span className="text-gas-400">.icu</span>
         </h2>
         <p className="mt-6 text-[20px] text-paper-dim sm:text-[24px]">
-          Read it out loud: <span className="font-semibold text-paper">I see you.</span>
+          Read it out loud: <span className="font-semibold text-paper">Watson, find. I see you.</span>
         </p>
         <p className="mx-auto mt-4 max-w-xl text-[17px] leading-relaxed text-fog">
           Now find out what the internet sees about you. Search your own nickname before someone else does.
@@ -427,7 +427,7 @@ function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-start md:justify-between">
         <div>
           <Logo size={24} />
-          <p className="mt-3 text-[15px] text-fog">watson.icu</p>
+          <p className="mt-3 text-[15px] text-fog">watsonfind.icu</p>
         </div>
         <div className="max-w-md space-y-3 text-[13px] leading-relaxed text-fog">
           <p className="flex gap-2">
