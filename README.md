@@ -3,10 +3,15 @@
 </p>
 
 <p align="center">
+  <a href="https://watson.icu"><img alt="Website: watson.icu" src="https://img.shields.io/badge/watson.icu-website-82a9f5?style=for-the-badge&labelColor=10151f"></a>
   <a href="https://github.com/footprintsntrails/watson/releases/latest"><img alt="Download for Windows" src="https://img.shields.io/badge/Download-Windows%20.exe-ffffff?style=for-the-badge&logo=windows&logoColor=000000&labelColor=82a9f5"></a>
   <img alt="Price: free forever" src="https://img.shields.io/badge/price-%240%20forever-30d158?style=for-the-badge&labelColor=10151f">
   <img alt="Status: prototype" src="https://img.shields.io/badge/status-prototype-ffd60a?style=for-the-badge&labelColor=10151f">
   <img alt="Built with Electron and React" src="https://img.shields.io/badge/Electron%20%2B%20React-10151f?style=for-the-badge&logo=react&logoColor=82a9f5">
+</p>
+
+<p align="center">
+  <b><a href="https://watson.icu">watson.icu</a></b>: read it out loud. <i>I see you.</i>
 </p>
 
 ---
@@ -91,6 +96,9 @@ Type what you know and press **Enter**.
 
 That's it. There is nothing else to learn.
 
+> [!TIP]
+> **No Windows?** Open **[watson.icu](https://watson.icu)** and click **Open in your browser**. Same app, nothing to download.
+
 ---
 
 ## See it in action
@@ -110,6 +118,14 @@ For bigger jobs, **Cases** connect everything Watson found into one map. Click a
 <p align="center">
   <img src="docs/images/demo-graph.gif" alt="Clicking points on the connections map" width="100%">
 </p>
+
+---
+
+## The website
+
+**[watson.icu](https://watson.icu)** has the full tour, the download button and the browser version of the app.
+
+<a href="https://watson.icu"><img src="docs/images/website.png" alt="The watson.icu landing page" width="100%"></a>
 
 ---
 
@@ -145,7 +161,7 @@ Watson only looks at information that is already public: things anyone could fin
 <details>
 <summary><b>Does it work on Mac?</b></summary>
 <br>
-Not as a ready-made download yet. Developers can run it on a Mac from source, see below.
+There is no Mac download yet. Use Watson in your browser at <a href="https://watson.icu">watson.icu</a> in the meantime.
 </details>
 
 <details>
@@ -199,6 +215,19 @@ Then open http://localhost:5173/app.
 npm run app
 ```
 
+### Website (watson.icu)
+
+The landing page and the browser version of the app are one static site:
+
+| URL | What's there |
+| --- | --- |
+| `watson.icu/` | Landing page: `src/pages/Landing.tsx` |
+| `watson.icu/app` | The app itself, running in the browser |
+
+Build it with `npm run build` and upload the `dist/` folder to any static host. Routes like `/app/history` must fall back to `index.html`; `public/_redirects` handles that on Netlify and Cloudflare Pages, and `vercel.json` on Vercel. Point the `watson.icu` DNS records at your host.
+
+The download buttons use `DOWNLOAD_URL` in `src/pages/Landing.tsx`. While this repository is private, visitors can't open GitHub Releases, so point it at a public copy of the .exe before launch.
+
 ### Build the Windows .exe
 
 ```bash
@@ -215,6 +244,7 @@ Vite, React 19, TypeScript, Tailwind CSS 4, Electron. Icons: [Phosphor](https://
 
 | Path | What's there |
 | --- | --- |
+| `src/pages/Landing.tsx` | The watson.icu landing page |
 | `src/pages/app/` | App screens: Search, Results, History, Case, Sources |
 | `src/components/` | Logo, glass lens, connections map, brand icons |
 | `src/data/mock.ts` | All demo data. Replace with real API calls here. |
@@ -228,5 +258,5 @@ Vite, React 19, TypeScript, Tailwind CSS 4, Electron. Icons: [Phosphor](https://
 
 <p align="center">
   <img src="public/favicon.svg" width="40" alt=""><br>
-  <sub>Watson. You see. Watson observes.</sub>
+  <sub><a href="https://watson.icu">watson.icu</a>. Free forever.</sub>
 </p>

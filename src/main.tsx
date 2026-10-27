@@ -4,7 +4,6 @@ import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom'
 import { IconContext } from '@phosphor-icons/react'
 import './index.css'
 import Landing from './pages/Landing'
-import Brand from './pages/Brand'
 import AppLayout from './pages/app/AppLayout'
 import History from './pages/app/History'
 import Search from './pages/app/Search'
@@ -22,7 +21,6 @@ createRoot(document.getElementById('root')!).render(
       <Router>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/brand" element={<Brand />} />
           <Route path="/app" element={<AppLayout />}>
             <Route index element={<Search />} />
             <Route path="results" element={<Results />} />
