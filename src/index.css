@@ -1,0 +1,171 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter/opsz.css";
+@import "@fontsource/instrument-serif/400.css";
+@import "@fontsource/instrument-serif/400-italic.css";
+
+@theme {
+  /* SF Pro on Apple platforms; bundled Inter elsewhere (SF can't be redistributed). */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter Variable", "Segoe UI Variable", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+  --font-serif: ui-serif, "New York", "Instrument Serif", Georgia, serif;
+
+  /* Midnight navy surfaces */
+  --color-ink-950: #05070c;
+  --color-ink-900: #0a0e17;
+  --color-ink-850: #10151f;
+  --color-ink-800: #182031;
+  --color-ink-700: #222b3f;
+  --color-ink-600: #2f3a52;
+
+  /* Labels */
+  --color-paper: #ffffff;
+  --color-paper-dim: #c7cfdf;
+  --color-fog: #8590a8;
+  --color-smoke: #576178;
+
+  /* Accent: cold steel blue (kept under the old "gas" names) */
+  --color-gas-300: #b4cdff;
+  --color-gas-400: #82a9f5;
+  --color-gas-500: #5683e0;
+  --color-ember: #8b7bff;
+
+  /* Apple system colors */
+  --color-signal: #64d2ff;
+  --color-evidence: #30d158;
+  --color-risk: #ff453a;
+  --color-violet: #bf5af2;
+  --color-caution: #ffd60a;
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-dash: dash 1.6s linear infinite;
+  --animate-ping-slow: ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  --animate-fade-up: fade-up 300ms ease-out both;
+  --animate-scan: scan 4s ease-in-out infinite;
+
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+  @keyframes dash {
+    to { stroke-dashoffset: -16; }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(12px); filter: blur(4px); }
+  }
+  @keyframes scan {
+    0%, 100% { transform: translateY(-10%); opacity: 0; }
+    15%, 85% { opacity: 1; }
+    50% { transform: translateY(1000%); }
+  }
+}
+
+html {
+  color-scheme: dark;
+  background: var(--color-ink-950);
+}
+
+body {
+  background: var(--color-ink-950);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  font-size: 15px;
+  letter-spacing: -0.008em;
+  font-optical-sizing: auto;
+  font-feature-settings: "cv11", "ss03";
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-gas-400) 35%, transparent);
+}
+
+/* Film grain overlay */
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Subtle dotted grid */
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Grouped surface (iOS/macOS inset group) */
+.hairline {
+  position: relative;
+  background: var(--color-ink-850);
+  border: 1px solid transparent;
+  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.08);
+}
+
+/* Windows high contrast drops box-shadow rings; give surfaces a real edge. */
+@media (forced-colors: active) {
+  .hairline,
+  [class*="ring-1"] {
+    border: 1px solid CanvasText;
+  }
+}
+
+/* Translucent material, like a macOS sidebar or Liquid Glass control */
+.material {
+  background: rgba(14, 19, 31, 0.72);
+  backdrop-filter: saturate(180%) blur(30px);
+  -webkit-backdrop-filter: saturate(180%) blur(30px);
+}
+
+/* Native window title bar drag area (Electron) */
+.drag { -webkit-app-region: drag; }
+.no-drag { -webkit-app-region: no-drag; }
+
+:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--color-gas-400) 60%, transparent);
+  outline-offset: 2px;
+}
+/* Text fields show focus on their container instead. */
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
+
+.text-gradient {
+  background: linear-gradient(180deg, #fff8e8 0%, var(--color-paper) 45%, #8f8a7e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gas {
+  background: linear-gradient(100deg, var(--color-gas-300), var(--color-gas-400) 40%, var(--color-ember));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ink-600) transparent;
+}
+
+.mask-fade-x {
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  /* Entrances still fade, they just don't move. */
+  @keyframes fade-up {
+    from { opacity: 0; }
+  }
+  .animate-fade-up {
+    animation-duration: 300ms !important;
+  }
+}
