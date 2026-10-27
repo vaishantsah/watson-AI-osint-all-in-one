@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import { CaretRight as ChevronRight, DownloadSimple as Download, Sparkle as Sparkles } from '@phosphor-icons/react'
 import { BrandIcon } from '../../components/BrandIcon'
 import { GlassLens } from '../../components/GlassLens'
-import { detectKind, foundProfiles, type PlatformGroup } from '../../data/mock'
+import { detectKind, searchProfiles, type PlatformGroup } from '../../data/mock'
 import { kindMeta } from './Search'
 
 const stages = ['Checking social networks', 'Checking forums', 'Checking developer sites', 'Checking games and media', 'Putting it together']
@@ -17,7 +17,7 @@ export default function Results() {
   const [progress, setProgress] = useState(0)
   const [filter, setFilter] = useState<(typeof groups)[number]>('All')
 
-  // Simulated scan so the prototype feels alive; replace with real job status later.
+  // Progress is timed locally; swap in the real job status when lookups are connected.
   useEffect(() => {
     setProgress(0)
     const t = setInterval(() => setProgress((p) => Math.min(100, p + 4)), 90)
@@ -26,9 +26,10 @@ export default function Results() {
 
   const done = progress >= 100
   const stage = Math.min(stages.length - 1, Math.floor(progress / (100 / stages.length)))
-  const visible = foundProfiles.slice(0, Math.round((progress / 100) * foundProfiles.length))
+  const profiles = searchProfiles(q)
+  const visible = profiles.slice(0, Math.round((progress / 100) * profiles.length))
   const list = visible.filter((p) => filter === 'All' || p.group === filter)
-  const same = foundProfiles.filter((p) => p.match === 'exact').length
+  const same = profiles.filter((p) => p.match === 'exact').length
 
   return (
     <div className="mx-auto max-w-[760px] px-5 pb-16 pt-8">
@@ -46,7 +47,7 @@ export default function Results() {
       </div>
 
       <p role="status" className="sr-only">
-        {done ? `Found on ${foundProfiles.length} sites` : 'Searching'}
+        {done ? (profiles.length ? `Found on ${profiles.length} sites` : 'Nothing found') : 'Searching'}
       </p>
 
       {/* Status */}
@@ -62,13 +63,20 @@ export default function Results() {
             <div className="h-full rounded-full bg-gas-400 transition-[width] duration-200" style={{ width: `${progress}%` }} />
           </div>
         </div>
+      ) : profiles.length === 0 ? (
+        <section className="animate-fade-up mt-8 rounded-2xl border border-transparent bg-ink-850 p-5 ring-1 ring-white/[0.06]">
+          <h2 className="text-[17px] font-semibold">Nothing found on public sites</h2>
+          <p className="mt-1.5 text-[15px] leading-relaxed text-fog">
+            Check the spelling, or try a different nickname, email, phone number or website.
+          </p>
+        </section>
       ) : (
         <section className="animate-fade-up mt-8 rounded-2xl border border-transparent bg-ink-850 p-5 ring-1 ring-white/[0.06]">
           <h2 className="flex items-center gap-2 text-[13px] font-semibold text-gas-400">
             <Sparkles className="size-4" /> What Watson found
           </h2>
           <p className="mt-2.5 text-[17px] leading-[1.5] text-paper">
-            This {meta.label.toLowerCase()} is used on <b className="font-semibold">{foundProfiles.length} public sites</b>.{' '}
+            This {meta.label.toLowerCase()} is used on <b className="font-semibold">{profiles.length} public sites</b>.{' '}
             {same} of them look like the same person: same name, matching photos and links between profiles. The oldest
             account is from 2015, and they are most active on GitHub and Reddit.
           </p>
@@ -81,26 +89,28 @@ export default function Results() {
       )}
 
       {/* Filters: bleed to the window edge so a cut-off chip shows there is more. */}
-      <div className="-mx-5 mt-8 overflow-x-auto px-5 py-1">
-        <div className="inline-flex rounded-[10px] bg-white/[0.07] p-0.5" aria-label="Filter by type" role="group">
-          {groups.map((g) => {
-            const n = g === 'All' ? visible.length : visible.filter((p) => p.group === g).length
-            const on = g === filter
-            return (
-              <button
-                key={g}
-                aria-pressed={on}
-                onClick={() => setFilter(g)}
-                className={`h-8 whitespace-nowrap rounded-[8px] px-3.5 text-[13px] font-medium transition-colors focus-visible:-outline-offset-3 ${
-                  on ? 'bg-ink-600 text-paper shadow-[0_1px_3px_rgba(0,0,0,0.4)]' : 'text-fog hover:text-paper'
-                }`}
-              >
-                {g} <span className="tabular-nums text-paper-dim">{n}</span>
-              </button>
-            )
-          })}
+      {!(done && profiles.length === 0) && (
+        <div className="-mx-5 mt-8 overflow-x-auto px-5 py-1">
+          <div className="inline-flex rounded-[10px] bg-white/[0.07] p-0.5" aria-label="Filter by type" role="group">
+            {groups.map((g) => {
+              const n = g === 'All' ? visible.length : visible.filter((p) => p.group === g).length
+              const on = g === filter
+              return (
+                <button
+                  key={g}
+                  aria-pressed={on}
+                  onClick={() => setFilter(g)}
+                  className={`h-8 whitespace-nowrap rounded-[8px] px-3.5 text-[13px] font-medium transition-colors focus-visible:-outline-offset-3 ${
+                    on ? 'bg-ink-600 text-paper shadow-[0_1px_3px_rgba(0,0,0,0.4)]' : 'text-fog hover:text-paper'
+                  }`}
+                >
+                  {g} <span className="tabular-nums text-paper-dim">{n}</span>
+                </button>
+              )
+            })}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Grouped list */}
       {list.length > 0 && (

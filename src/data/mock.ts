@@ -1,4 +1,4 @@
-// Placeholder data for the design prototype. No real lookups happen anywhere.
+// Built-in example data used by the screens until real lookups are connected.
 
 export type EntityKind = 'domain' | 'company' | 'email' | 'ip' | 'person' | 'username' | 'cert' | 'leak' | 'repo'
 
@@ -141,3 +141,14 @@ export const foundProfiles: FoundProfile[] = [
   { site: 'Habr', group: 'Forums', since: '2020', hue: '#7dd3fc', detail: 'Reader', match: 'likely' },
   { site: 'Docker Hub', group: 'Dev', since: '2021', hue: '#38bdf8', detail: '4 images', match: 'exact' },
 ]
+
+export const EXAMPLE_QUERY = 'johndoe_92'
+
+/**
+ * The one place search results come from. Connect real lookups (Maigret,
+ * holehe, theHarvester...) here. Until then only the example nickname
+ * returns profiles, so no made-up accounts are ever shown for a real person.
+ */
+export function searchProfiles(query: string): FoundProfile[] {
+  return query.trim().toLowerCase() === EXAMPLE_QUERY ? foundProfiles : []
+}

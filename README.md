@@ -6,7 +6,6 @@
   <a href="https://watsonfind.icu"><img alt="Website: watsonfind.icu" src="https://img.shields.io/badge/watsonfind.icu-website-82a9f5?style=for-the-badge&labelColor=10151f"></a>
   <a href="https://github.com/footprintsntrails/watson/releases/latest"><img alt="Download for Windows" src="https://img.shields.io/badge/Download-Windows%20.exe-ffffff?style=for-the-badge&logo=windows&logoColor=000000&labelColor=82a9f5"></a>
   <img alt="Price: free forever" src="https://img.shields.io/badge/price-%240%20forever-30d158?style=for-the-badge&labelColor=10151f">
-  <img alt="Status: prototype" src="https://img.shields.io/badge/status-prototype-ffd60a?style=for-the-badge&labelColor=10151f">
   <img alt="Built with Electron and React" src="https://img.shields.io/badge/Electron%20%2B%20React-10151f?style=for-the-badge&logo=react&logoColor=82a9f5">
 </p>
 
@@ -27,9 +26,6 @@ The answer is already out there, scattered across **3,100+ public sites**. Findi
 <p align="center">
   <img src="docs/images/demo-search.gif" alt="Typing a nickname into Watson and getting results" width="100%">
 </p>
-
-> [!IMPORTANT]
-> **This build is a design prototype.** Every screen is real and clickable, but the results are demo data: Watson does not search the internet yet. It shows exactly what the finished app will look and feel like.
 
 ---
 
@@ -247,7 +243,7 @@ Vite, React 19, TypeScript, Tailwind CSS 4, Electron. Icons: [Phosphor](https://
 | `src/pages/Landing.tsx` | The watsonfind.icu landing page |
 | `src/pages/app/` | App screens: Search, Results, History, Case, Sources |
 | `src/components/` | Logo, glass lens, connections map, brand icons |
-| `src/data/mock.ts` | All demo data. Replace with real API calls here. |
+| `src/data/mock.ts` | Example data and `searchProfiles()`, the one function to connect real lookups to |
 | `src/index.css` | Colors, fonts and other design tokens |
 | `electron/main.cjs` | Desktop window |
 | `DESIGN.md` | Design rules: colors, type, icons, voice |

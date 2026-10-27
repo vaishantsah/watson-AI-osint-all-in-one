@@ -141,7 +141,7 @@ function Hero() {
             Open in your browser <ArrowRight className="size-4" />
           </Link>
         </div>
-        <p className="mt-4 text-[13px] text-fog">Windows 10 and 11. One file, nothing to install. Preview build with sample results.</p>
+        <p className="mt-4 text-[13px] text-fog">Windows 10 and 11. One file, nothing to install.</p>
 
         <div className="mx-auto mt-16 max-w-5xl">
           <Window label="Searching a nickname in Watson">
@@ -386,10 +386,6 @@ function Faq() {
       'Windows shows that screen for any new app without a paid code-signing certificate. Click More info, then Run anyway. You only do it once.',
     ],
     ['Does it work on Mac?', 'There is no Mac download yet. You can use Watson in your browser in the meantime.'],
-    [
-      'Are the results real?',
-      'Not yet. This is a preview build: every screen works, but results are sample data while the search engine is finished.',
-    ],
   ]
   return (
     <section id="faq" className="scroll-mt-20 px-5 py-24">

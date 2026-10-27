@@ -1,29 +1,29 @@
 import { Link } from 'react-router-dom'
 import { CaretRight as ChevronRight } from '@phosphor-icons/react'
-import { detectKind } from '../../data/mock'
+import { detectKind, searchProfiles } from '../../data/mock'
 import { kindMeta } from './Search'
 
 const history = [
   {
     day: 'Today',
     items: [
-      { q: 'johndoe_92', found: 12, time: '14:32' },
-      { q: 'acme-logistics.com', found: 23, time: '11:05' },
+      { q: 'johndoe_92', time: '14:32' },
+      { q: 'acme-logistics.com', time: '11:05' },
     ],
   },
   {
     day: 'Yesterday',
     items: [
-      { q: 'Northwind Holdings Ltd', found: 7, time: '18:47' },
-      { q: 'billing@contoso.io', found: 4, time: '09:12' },
+      { q: 'Northwind Holdings Ltd', time: '18:47' },
+      { q: 'billing@contoso.io', time: '09:12' },
     ],
   },
   {
     day: 'Last week',
     items: [
-      { q: '+44 20 7946 0958', found: 2, time: 'Oct 21' },
-      { q: 'night_owl', found: 31, time: 'Oct 20' },
-      { q: 'globex.com', found: 18, time: 'Oct 19' },
+      { q: '+44 20 7946 0958', time: 'Oct 21' },
+      { q: 'night_owl', time: 'Oct 20' },
+      { q: 'globex.com', time: 'Oct 19' },
     ],
   },
 ]
@@ -40,6 +40,7 @@ export default function History() {
           <ul className="mt-2 overflow-hidden rounded-2xl border border-transparent bg-ink-850 ring-1 ring-white/[0.06]">
             {g.items.map((it, i) => {
               const m = kindMeta[detectKind(it.q)]
+              const found = searchProfiles(it.q).length
               return (
                 <li key={it.q}>
                   <Link
@@ -52,7 +53,7 @@ export default function History() {
                     <span className="min-w-0 flex-1">
                       <span className="block break-all text-[15px] font-medium">{it.q}</span>
                       <span className="block text-[13px] text-fog">
-                        {m.label}, found on {it.found} {it.found === 1 ? 'site' : 'sites'}
+                        {m.label}, {found ? `found on ${found} ${found === 1 ? 'site' : 'sites'}` : 'nothing found'}
                       </span>
                     </span>
                     <span className="shrink-0 text-[13px] tabular-nums text-fog">{it.time}</span>
