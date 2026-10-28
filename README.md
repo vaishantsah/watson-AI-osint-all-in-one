@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://watsonfind.icu"><img alt="Website: watsonfind.icu" src="https://img.shields.io/badge/watsonfind.icu-website-82a9f5?style=for-the-badge&labelColor=10151f"></a>
-  <a href="https://github.com/footprintsntrails/watson/releases/latest"><img alt="Download for Windows" src="https://img.shields.io/badge/Download-Windows%20.exe-ffffff?style=for-the-badge&logo=windows&logoColor=000000&labelColor=82a9f5"></a>
+  <a href="https://github.com/vaishantsah/watson-AI-osint-all-in-one/releases/latest"><img alt="Download for Windows" src="https://img.shields.io/badge/Download-Windows%20.exe-ffffff?style=for-the-badge&logo=windows&logoColor=000000&labelColor=82a9f5"></a>
   <img alt="Price: free forever" src="https://img.shields.io/badge/price-%240%20forever-30d158?style=for-the-badge&labelColor=10151f">
   <img alt="Built with Electron and React" src="https://img.shields.io/badge/Electron%20%2B%20React-10151f?style=for-the-badge&logo=react&logoColor=82a9f5">
 </p>
@@ -64,7 +64,7 @@ No setup wizard, no account, no admin rights. Download one file and open it.
 
 ### 1. Download
 
-Go to **[Releases](https://github.com/footprintsntrails/watson/releases/latest)** and click **`Watson-1.3.2-portable.exe`**.
+Download it from **[watsonfind.icu](https://watsonfind.icu)** — the site always serves the current build. You can also grab **`Watson-1.3.2-portable.exe`** from **[Releases](https://github.com/vaishantsah/watson-AI-osint-all-in-one/releases/latest)**.
 
 <img src="docs/images/step-1-download.png" alt="Step 1: click the .exe file on the Releases page" width="100%">
 
