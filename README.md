@@ -15,6 +15,20 @@
 
 ---
 
+## What is Watson
+
+Watson is a **free OSINT search tool** (open-source intelligence) for Windows. It
+collects the trail a person leaves in public places — social networks, forums,
+games, developer sites — and turns it into a readable answer.
+
+Type a **nickname**, **email**, **phone number** or **website** and Watson checks
+**3,100+ public sources** for profiles and mentions. It's a digital footprint
+check, a username lookup and a social media search in one window — no terminal,
+no Python, no API keys.
+
+Use it to vet sellers before you pay, check a job offer, look at a new
+acquaintance, or see what the internet knows about **you**.
+
 ## You're about to do business with someone. Do you actually know who they are?
 
 Your new supplier. The guy selling you a car. The "recruiter" in your inbox. The account that keeps showing up in your comments.
