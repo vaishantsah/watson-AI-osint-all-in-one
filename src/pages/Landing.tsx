@@ -1,12 +1,9 @@
 import { useEffect, type ReactNode } from 'react'
-import { Link } from 'react-router-dom'
 import {
-  ArrowRight,
   Check,
   ClockCounterClockwise,
   DownloadSimple,
   FilePdf,
-  Graph,
   LockSimple,
   ShieldCheck,
   Sparkle,
@@ -24,10 +21,10 @@ import screenSearch from '../../docs/images/screen-search.png'
 import screenScanning from '../../docs/images/screen-scanning.png'
 import screenResults from '../../docs/images/step-4-results.png'
 
-// The .exe lives in GitHub Releases. Point this at a public mirror if the repo stays private.
-export const DOWNLOAD_URL = 'https://github.com/footprintsntrails/watson/releases/latest'
-
 const sites = ['GitHub', 'Reddit', 'Steam', 'Twitch', 'Medium', 'Telegram', 'Pinterest', 'Stack Overflow', 'Chess.com', 'SoundCloud', 'Habr', 'Docker Hub']
+
+// Served by the watsonfind.icu host at /api/download (see the nginx site config).
+export const DOWNLOAD_URL = '/api/download'
 
 const nav = [
   ['How it works', '#how'],
@@ -134,12 +131,6 @@ function Hero() {
         </p>
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <DownloadButton size="lg" />
-          <Link
-            to="/app"
-            className="inline-flex h-12 items-center gap-2 rounded-full px-6 text-[16px] text-paper ring-1 ring-white/15 transition-colors hover:bg-white/[0.06]"
-          >
-            Open in your browser <ArrowRight className="size-4" />
-          </Link>
         </div>
         <p className="mt-4 text-[13px] text-fog">Windows 10 and 11. One file, nothing to install.</p>
 
@@ -362,12 +353,9 @@ function SeeYourself() {
         <p className="mx-auto mt-4 max-w-xl text-[17px] leading-relaxed text-fog">
           Now find out what the internet sees about you. Search your own nickname before someone else does.
         </p>
-        <Link
-          to="/app"
-          className="mt-8 inline-flex h-12 items-center gap-2 rounded-full px-6 text-[16px] text-paper ring-1 ring-white/15 transition-colors hover:bg-white/[0.06]"
-        >
-          Search yourself <ArrowRight className="size-4" />
-        </Link>
+        <div className="mt-8">
+          <DownloadButton size="lg" />
+        </div>
       </div>
     </section>
   )
@@ -385,7 +373,7 @@ function Faq() {
       'Windows says it protected my PC. Is the file safe?',
       'Windows shows that screen for any new app without a paid code-signing certificate. Click More info, then Run anyway. You only do it once.',
     ],
-    ['Does it work on Mac?', 'There is no Mac download yet. You can use Watson in your browser in the meantime.'],
+    ['Does it work on Mac?', 'Not yet. Watson today is a Windows program; a Mac version may come later.'],
   ]
   return (
     <section id="faq" className="scroll-mt-20 px-5 py-24">
@@ -440,9 +428,6 @@ function Footer() {
           <a href={DOWNLOAD_URL} className="inline-flex items-center gap-2 text-paper-dim hover:text-paper">
             <DownloadSimple className="size-4" /> Download for Windows
           </a>
-          <Link to="/app" className="inline-flex items-center gap-2 text-paper-dim hover:text-paper">
-            <Graph className="size-4" /> Open in your browser
-          </Link>
         </div>
       </div>
       <p className="mx-auto mt-10 max-w-6xl text-[12px] text-fog">© 2026 Watson. Free forever.</p>

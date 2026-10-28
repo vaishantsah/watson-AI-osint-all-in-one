@@ -93,7 +93,7 @@ Type what you know and press **Enter**.
 That's it. There is nothing else to learn.
 
 > [!TIP]
-> **No Windows?** Open **[watsonfind.icu](https://watsonfind.icu)** and click **Open in your browser**. Same app, nothing to download.
+> **No Windows?** The desktop app is Windows-only for now; a Mac version may come later.
 
 ---
 
@@ -119,7 +119,7 @@ For bigger jobs, **Cases** connect everything Watson found into one map. Click a
 
 ## The website
 
-**[watsonfind.icu](https://watsonfind.icu)** has the full tour, the download button and the browser version of the app.
+**[watsonfind.icu](https://watsonfind.icu)** has the full tour and the download button.
 
 <a href="https://watsonfind.icu"><img src="docs/images/website.png" alt="The watsonfind.icu landing page" width="100%"></a>
 
@@ -157,7 +157,7 @@ Watson only looks at information that is already public: things anyone could fin
 <details>
 <summary><b>Does it work on Mac?</b></summary>
 <br>
-There is no Mac download yet. Use Watson in your browser at <a href="https://watsonfind.icu">watsonfind.icu</a> in the meantime.
+There is no Mac download yet.
 </details>
 
 <details>
@@ -196,14 +196,14 @@ Watson is built for checking who you're dealing with: vendors, partners, sellers
 
 [Node.js](https://nodejs.org) 22 or newer.
 
-### Run in the browser
+### Run the site
 
 ```bash
 npm install
 npm run dev
 ```
 
-Then open http://localhost:5173/app.
+Then open http://localhost:5173.
 
 ### Run as a desktop app
 
@@ -213,16 +213,16 @@ npm run app
 
 ### Website (watsonfind.icu)
 
-The landing page and the browser version of the app are one static site:
+The site is a static landing page; the app itself lives in the desktop build:
 
 | URL | What's there |
 | --- | --- |
 | `watsonfind.icu/` | Landing page: `src/pages/Landing.tsx` |
-| `watsonfind.icu/app` | The app itself, running in the browser |
+| `dist/app.html` | The app, loaded by the Electron window |
 
-Build it with `npm run build` and upload the `dist/` folder to any static host. Routes like `/app/history` must fall back to `index.html`; `public/_redirects` handles that on Netlify and Cloudflare Pages, and `vercel.json` on Vercel. Point the `watsonfind.icu` DNS records at your host.
+Build it with `npm run build` and upload the `dist/` folder to any static host. `public/_redirects` handles SPA fallback on Netlify and Cloudflare Pages, and `vercel.json` on Vercel. Point the `watsonfind.icu` DNS records at your host. The host must also serve the `.exe` at `/api/download` (see `DOWNLOAD_URL` in `src/pages/Landing.tsx`).
 
-The download buttons use `DOWNLOAD_URL` in `src/pages/Landing.tsx`. While this repository is private, visitors can't open GitHub Releases, so point it at a public copy of the .exe before launch.
+The download buttons use `DOWNLOAD_URL` in `src/pages/Landing.tsx`; on this server nginx serves the `.exe` from `/api/download`.
 
 ### Build the Windows .exe
 
@@ -240,6 +240,8 @@ Vite, React 19, TypeScript, Tailwind CSS 4, Electron. Icons: [Phosphor](https://
 
 | Path | What's there |
 | --- | --- |
+| `src/landing.tsx` | Entry for the website (`index.html`) |
+| `src/app.tsx` | Entry for the desktop app (`app.html`) |
 | `src/pages/Landing.tsx` | The watsonfind.icu landing page |
 | `src/pages/app/` | App screens: Search, Results, History, Case, Sources |
 | `src/components/` | Logo, glass lens, connections map, brand icons |
@@ -253,6 +255,6 @@ Vite, React 19, TypeScript, Tailwind CSS 4, Electron. Icons: [Phosphor](https://
 ---
 
 <p align="center">
-  <img src="public/favicon.svg" width="40" alt=""><br>
+  <img src="public/favicon-32.png" width="40" alt=""><br>
   <sub><a href="https://watsonfind.icu">watsonfind.icu</a>. Free forever.</sub>
 </p>

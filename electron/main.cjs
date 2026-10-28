@@ -22,7 +22,7 @@ function createWindow() {
   })
 
   win.once('ready-to-show', () => win.show())
-  win.loadFile(path.join(__dirname, '..', 'dist', 'index.html'), { hash: '/app' })
+  win.loadFile(path.join(__dirname, '..', 'dist', 'app.html'), { hash: '/app' })
 }
 
 // Role menus keep zoom (Ctrl/Cmd +/-/0) and copy/paste shortcuts working;
