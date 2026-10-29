@@ -16,4 +16,4 @@ If applicable, add screenshots.
 
 **Environment**
 - OS: (e.g. Windows 11)
-- Watson version: (see the window title, e.g. 1.3.2)
+- Watson version: (see the window title, e.g. 1.4.0)

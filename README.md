@@ -81,7 +81,7 @@ No setup wizard, no account, no admin rights. Download one file and open it.
 Two ways, same file:
 
 - **From the website:** open **[watsonfind.icu](https://watsonfind.icu)** and click **Download free**.
-- **From GitHub:** open **[Releases](https://github.com/vaishantsah/watson-AI-osint-all-in-one/releases/latest)** and download `Watson-1.3.2-portable.exe`.
+- **From GitHub:** open **[Releases](https://github.com/vaishantsah/watson-AI-osint-all-in-one/releases/latest)** and download `Watson-1.4.0-portable.exe`.
 
 Both serve the same build — pick whichever you prefer.
 
@@ -247,7 +247,7 @@ The download buttons use `DOWNLOAD_URL` in `src/pages/Landing.tsx`; on this serv
 npm run dist:win
 ```
 
-The file lands in `release/Watson-1.3.2-portable.exe`. Building on Linux works without Wine, but then the .exe keeps the default Electron file icon. Build on Windows to embed the Watson icon.
+The file lands in `release/Watson-1.4.0-portable.exe`. Building on Linux works without Wine, but then the .exe keeps the default Electron file icon. Build on Windows to embed the Watson icon.
 
 ### Stack
 

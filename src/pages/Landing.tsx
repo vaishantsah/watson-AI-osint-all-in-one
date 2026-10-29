@@ -132,7 +132,7 @@ function Hero() {
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <DownloadButton size="lg" />
         </div>
-        <p className="mt-4 text-[13px] text-fog">Windows 10 and 11. One file, nothing to install.</p>
+        <p className="mt-4 text-[13px] text-fog">Windows 10 and 11. Version 1.4.0. One file, nothing to install.</p>
 
         <div className="mx-auto mt-16 max-w-5xl">
           <Window label="Searching a nickname in Watson">
@@ -425,6 +425,7 @@ function Footer() {
           </p>
         </div>
         <div className="flex flex-col gap-2 text-[14px]">
+          <span className="text-[12px] text-fog">v1.4.0 · Windows</span>
           <a href={DOWNLOAD_URL} className="inline-flex items-center gap-2 text-paper-dim hover:text-paper">
             <DownloadSimple className="size-4" /> Download for Windows
           </a>
